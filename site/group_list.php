@@ -1,8 +1,10 @@
 <h3>List of all groups:</h3>
+<?php if ($_SESSION['acc_type'] == 1) { ?>
 <a href="./functions/create_g.php">
     <button type="submit" class="btn btn-primary m-2"><i class="fa fa-plus" aria-hidden="true"></i> Create new
         group</button>
 </a>
+<?php } ?>
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
@@ -44,8 +46,10 @@
                 echo implode(", ", $grp_arr);
                 echo "</td>";
                 echo "<td class='d-flex'>";
-                echo "<form class='m-1' method='post' action='functions/delete_g.php'><button type='submit' class='btn btn-danger'>Delete</button><input type='hidden' name='id' value='" . $row['g_id'] . "'/></form>";
-                echo "<form class='m-1' method='post' action='functions/edit_g.php'><button type='submit' class='btn btn-warning'>Edit</button><input type='hidden' name='id' value='" . $row['g_id'] . "'/></form>";
+                if ($_SESSION['acc_type'] == 1) {
+                    echo "<form class='m-1' method='post' action='functions/delete_g.php'><button type='submit' class='btn btn-danger'>Delete</button><input type='hidden' name='id' value='" . $row['g_id'] . "'/></form>";
+                    echo "<form class='m-1' method='post' action='functions/edit_g.php'><button type='submit' class='btn btn-warning'>Edit</button><input type='hidden' name='id' value='" . $row['g_id'] . "'/></form>";
+                }
                 echo "</td>";
                 echo "</tr>";
             }

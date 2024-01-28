@@ -1,9 +1,12 @@
 <?php
+session_start();
 $alert = "info";
 $state = "none";
 $text = "";
 $title = "";
-
+if (isset($_SESSION['id'])) {
+    header("Location: dashboard.php");
+}
 if (isset($_POST['submit'])) {
     if (!empty($_POST["username"]) && !empty($_POST['passwd'])) {
         require "functions/connect.php";

@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: ../index.php");
 } else {
+    if ($_SESSION['acc_type'] != 1) header("Location: ../dashboard.php");
     require "connect.php";
     $conn = db_con();
 
